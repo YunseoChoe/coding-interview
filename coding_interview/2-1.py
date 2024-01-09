@@ -8,4 +8,6 @@ def delete_duplicates(ll: LinkedList):
 
 if __name__ == '__main__':
     # Write your test cases here
-    pass
+    ll = LinkedList()
+    ll.insert_first(1)
+    ll.insert_last(3)
