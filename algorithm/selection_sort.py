@@ -16,6 +16,7 @@ def selection_sort(nums: List[int]) -> List[int]:
         nums[min_index] = temp     
 
     return nums
+
 if __name__ == '__main__':
     # Write your test cases here
     testcode1 = [5, 4, 3, 2, 1]
