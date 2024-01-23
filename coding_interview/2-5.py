@@ -1,4 +1,6 @@
-from ..data_structure.linked_list import LinkedList
+import sys
+sys.path.append('..')
+from data_structure.linked_list import LinkedList
 
 def sum_lists(ll1: LinkedList, ll2: LinkedList):
     """

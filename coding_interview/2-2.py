@@ -1,4 +1,7 @@
-from ..data_structure.linked_list import LinkedList
+import sys
+sys.path.append('..')
+
+from data_structure.linked_list import LinkedList
 
 def nth_to_last(ll: LinkedList, n: int):
     """
