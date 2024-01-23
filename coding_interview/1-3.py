@@ -17,6 +17,17 @@ def urlify(s: str, length: int) -> str:
     
     return charArray
 
+def urlify2(s, length):
+    # 문자열 -> list
+    s = list(s)
+    for i in range(len(s)):
+        if s[i] == " ":
+            s[i] = "%20"
+    # list -> 문자열
+    for i in range(len(s)):
+        s = ''.join(s)
+    return s
+
 if __name__ == '__main__':
     # Write your test cases here
     testcase1 = "abc "          # 'abc%20'
@@ -26,3 +37,4 @@ if __name__ == '__main__':
     assert urlify(testcase1, len(testcase1)) == "abc%20"
     assert urlify(testcase2, len(testcase2)) == "%20ffdvs%20ds%20"
     assert urlify(testcase3, len(testcase3)) == "Mr%20John%20Smith"
+    assert urlify2(testcase3, len(testcase3)) == "Mr%20John%20Smith"

@@ -39,18 +39,22 @@ if __name__ == '__main__':
     testcase2 = "aabbcc" # False
     testcase3 = "AaBbc"  # False
     testcase4 = "zxyut"  # True
+    testcase5 = "abcabc"  # False
 
     assert is_unique_characters(testcase1) == True
     assert is_unique_characters(testcase2) == False
     assert is_unique_characters(testcase3) == False
     assert is_unique_characters(testcase4) == True
+    assert is_unique_characters(testcase5) == False
 
     assert is_unique_characters2(testcase1) == True
     assert is_unique_characters2(testcase2) == False
     assert is_unique_characters2(testcase3) == False
     assert is_unique_characters2(testcase4) == True
+    assert is_unique_characters2(testcase5) == False
 
     assert is_unique_characters3(testcase1) == True
     assert is_unique_characters3(testcase2) == False
     assert is_unique_characters3(testcase3) == False
     assert is_unique_characters3(testcase4) == True
+    assert is_unique_characters3(testcase5) == False
