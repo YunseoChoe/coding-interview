@@ -122,19 +122,79 @@ class BinarySearchTree:
             print(cur_node.value, end = " -> ")
             self.inorder(cur_node.right)
 
+    # 높이 반환 함수
+    def get_height(self, root):
+        # 트리가 비었을 때
+        if root == None:
+            return 0
+        # 노드가 1개 있을 때
+        elif root != None and root.left == None and root.right == None:
+            return 1
+        # 노드가 2개 이상 있을 때
+        else:        
+            height = 1
+            current = root
+            while current.left != None or current.right != None:
+                # 왼쪽
+                if current.left != None:
+                    current = current.left
+                    height += 1
+                # 오른쪽
+                elif current.right != None:
+                    current = current.right
+                    height += 1
+            return height
+    
+    def get_balance_factor(self, node):
+        # 트리가 비어있으면
+        if self.root.value == None:
+            return None # 0으로 하면 left, right 높이가 같다고 잘못 생각할 수 있음
+        # 트리가 비어있지 않다면
+        # 노드가 1개라면 == 자식이 0개라면
+        elif self.root.left == None and self.root.right == None:
+            return 0
+        # 노드가 2개 이상이라면
+        else:
+            # 왼쪽 높이 - 오른쪽 높이
+            left = self.get_height(self.root.left)
+            right = self.get_height(self.root.right)
+            print(f'왼쪽:{left}')
+            print(f'오른쪽:{right}')
+            return left - right
+        
+    def right_rotate(self, root):
+        root.right = root
+        root.left = root.right.right
+        return root.right
+    
+    def left_rotate(self, root):
+        root.left = root
+        root.right = root.left.left
+        return root.left
+    
+    def lr_rotate(self, root):
+        root.left = self.left_rotate(root.left)
+        return self.right_rotate(root)
+
+    def rl_rotate(self, root):
+        root.right = self.right_rotate(root.right)
+        return self.left_rotate(root)
+
 bst = BinarySearchTree()
 bst.insert(4)
 bst.insert(3)
 bst.insert(1)
 bst.insert(2)
 bst.insert(5)
-
 bst.inorder(bst.root)
 print()
-
-bst.delete(1)
-bst.inorder(bst.root)
+print(bst.get_height(bst.root))
 print()
+print(bst.get_balance_factor(bst.root))
 
-bst.insert(0)
-bst.inorder(bst.root)
+# bst.delete(1)
+# bst.inorder(bst.root)
+# print()
+
+# bst.insert(0)
+# bst.inorder(bst.root)

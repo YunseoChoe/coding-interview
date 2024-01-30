@@ -1,5 +1,7 @@
+from typing import List
+
 class Node:
-    def __init__(self, data, next):
+    def __init__(self, data: int, next):
         self.data = data
         self.next = next
 
@@ -53,6 +55,9 @@ class LinkedList:
             print("->", end = "")
             cur = cur.next
         print()
+    
+    def to_array(self) -> List:
+        pass
 
 if __name__ == '__main__':
     ll = LinkedList()

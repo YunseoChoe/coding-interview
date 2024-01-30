@@ -7,14 +7,14 @@ def delete_duplicates(ll: LinkedList) -> LinkedList:
     """
     Remove duplicates from an unsorted linked list.
     """
-    # 1. ll의 원소들을 ll_list 안에 넣기
+    # ll_list
     ll_list = []
     current = ll.head
     while current != None:
         ll_list.append(current.data)
         current = current.next
     
-    # 2. 딕셔너리에 저장
+    # 딕셔너리에 저장
     # int -> str
     for i in range(len(ll_list)):
         ll_list[i] = str(ll_list[i])
@@ -28,7 +28,7 @@ def delete_duplicates(ll: LinkedList) -> LinkedList:
         else:
             dict[ll_list[i]] = 1
     
-    # 3. list에 저장
+    # list에 저장
     list = []
     for key in dict:
         if dict[key] == 1:
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     ll.insert_last(4)
     ll.insert_last(3)
     ll.insert_first(4)
-    ll.print()
+    ll.print() #  4 0 1 2 3 4 4 4 3
 
     ll_2 = LinkedList()
     ll_2.insert_first(-1)
@@ -60,8 +60,7 @@ if __name__ == '__main__':
     ll_2.insert_last(2)
     ll_2.insert_last(3)
     ll_2.insert_last(3)
-    ll_2.insert_last(3)
-    ll_2.print()
+    ll_2.print() # -1 1 1 2 3 3
 
     testcase1 = ll
     testcase2 = ll_2
