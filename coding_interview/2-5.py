@@ -7,65 +7,61 @@ def sum_lists(ll1: LinkedList, ll2: LinkedList) -> LinkedList:
     Sum two linked lists. Each node contains a single digit and the digits are 
     stored in reverse order.
     """
-    # ll1 길이 구하기
-    ll1_length = 0
-    current = ll1.head
-    while current != None:
-        ll1_length +=1
-        current = current.next
-    # ll2 길이 구하기
-    ll2_length = 0
-    current = ll2.head
-    while current != None:
-        ll2_length +=1
-        current = current.next
-
-    # list_1, list_2 배열 초기화
-    list_1 = []
-    for i in range(ll1_length):
-        list_1.append(0)
-    list_2 = []
-    for i in range(ll2_length):
-        list_2.append(0)
-
-    # 역순으로 저장
-    current = ll1.head
+    # 역순
+    sum1 = LinkedList()
+    sum2 = LinkedList()
+    current1 = ll1.head
     current2 = ll2.head
-    while True:
-        for i in range(ll1_length - 1, -1, -1):
-            list_1[i] = current.data
-            current = current.next
-        for i in range(ll2_length - 1, -1, -1):
-            list_2[i]= current2.data
-            current2 = current2.next
-        break
+    while current1 != None: 
+        sum1.insert_first(current1.data)
+        current1 = current1.next
+    while current2 != None:
+        sum2.insert_first(current2.data)
+        current2 = current2.next
 
-    # 합
-    list_1_int = ""
-    list_2_int = ""
-    for i in range(len(list_1)):
-        list_1_int += str(list_1[i])
-    for i in range(len(list_2)):
-        list_2_int += str(list_2[i])
-    list_1_int = int(list_1_int)
-    list_2_int = int(list_2_int)
+    # 정수로 저장
+    str1 = ""
+    str2 = ""
+    current1 = sum1.head
+    current2 = sum2.head
 
-    sum = list_1_int + list_2_int
-    
-    return sum
+    while current1 != None:
+        str1 += str(current1.data)
+        current1 = current1.next
+    while current2 != None:
+        str2 += str(current2.data)
+        current2 = current2.next
+
+    # 더하기
+    sum = int(str1) + int(str2)
+    sum = str(sum)
+    ll_sum = LinkedList()
+
+    for i in range(len(sum)):
+        ll_sum.insert_first(int(sum[i]))
+
+    # ll_sum.print()
+
+    return ll_sum
 
 if __name__ == '__main__':
+
     # Write your test cases here
     ll = LinkedList()
     ll.insert_first(7)
     ll.insert_last(1)
     ll.insert_last(6)
-    # # 7->1->6-> == 617
+    # 7->1->6-> == 617
 
     ll_2 = LinkedList()
     ll_2.insert_first(5)
     ll_2.insert_last(9)
     ll_2.insert_last(2)
-    # # 5->9->2-> == 295
+    # 5->9->2-> == 295
 
-    assert sum_lists(ll, ll_2) == 912 # [9, 1, 2]
+    testcase1 = sum_lists(ll, ll_2)
+
+    # array로 변환
+    array_testcase1 = testcase1.to_array()
+
+    assert array_testcase1 == [2, 1, 9] 
