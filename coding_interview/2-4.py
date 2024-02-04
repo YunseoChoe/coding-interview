@@ -17,11 +17,13 @@ def partition(ll: LinkedList, x: int) -> LinkedList:
         else:
             rll.insert_last(current.data)
         current = current.next
+
     # 합치기
     current = lll.head
     while current.next != None:
         current = current.next
     current.next = rll.head
+
     return lll
 
 if __name__ == '__main__':
@@ -51,11 +53,11 @@ if __name__ == '__main__':
     # 0, -1, 5, 3
 
     testcase1 = partition(ll, 5)
-    array_testcase1 = testcase1.to_array()
-
     testcase2 = partition(ll_2, 2)
-    array_testcase2 = testcase2.to_array()
 
+    # array로 전환
+    array_testcase1 = testcase1.to_array()
+    array_testcase2 = testcase2.to_array()
 
     assert array_testcase1 == [3, 2, 1, 5, 8, 5, 10]
     assert array_testcase2 == [0, -1, 5, 3]
